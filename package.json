@@ -1,0 +1,14 @@
+{
+  "name": "post-disaster-rehab",
+  "version": "1.0.0",
+  "description": "Post-Disaster Rehabilitation Coordination System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0"
+  }
+}

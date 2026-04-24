@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NGO Dashboard - View and manage assigned rehabilitation tasks" />
+  <title>NGO Dashboard | Disaster Rehab</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <span class="icon">🤝</span>
+      <span>NGO Dashboard</span>
+    </div>
+    <div class="user-badge">
+      <span>👤 <span id="user-display">ngo_user</span></span>
+      <span class="role-tag">NGO</span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <!-- Alert -->
+    <div id="alert-msg" class="alert"></div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-label">Assigned Tasks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🔄</div>
+        <div class="stat-value" id="stat-progress">0</div>
+        <div class="stat-label">In Progress</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value" id="stat-done">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+    </div>
+
+    <!-- Assigned Tasks Table -->
+    <div class="card">
+      <div class="card-header">📋 My Assigned Tasks</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>Resources</th>
+              <th>Status</th>
+              <th>Remarks</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="assigned-table-body">
+            <tr>
+              <td colspan="7" class="empty-state">Loading assignments...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Update Assignment Form -->
+    <div class="card" id="update-card" style="display:none;">
+      <div class="card-header">✏️ Update Assignment</div>
+      <form id="update-form">
+        <input type="hidden" id="update-id" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="update-status">Status</label>
+            <select id="update-status" class="form-control" required>
+              <option value="assigned">Assigned</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="update-remarks">Remarks</label>
+            <input type="text" id="update-remarks" class="form-control" placeholder="Add a progress note..." />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">💾 Save Update</button>
+        <button type="button" class="btn btn-outline" onclick="hideUpdateForm()"
+          style="margin-left:8px;">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/ngo.js"></script>
+</body>
+
+</html>

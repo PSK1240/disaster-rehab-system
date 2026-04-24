@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Government Dashboard - Manage disaster rehabilitation tasks" />
+  <title>Government Dashboard | Disaster Rehab</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <span class="icon">🏛️</span>
+      <span>Government Dashboard</span>
+    </div>
+    <div class="user-badge">
+      <span>👤 <span id="user-display">admin</span></span>
+      <span class="role-tag">Government</span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <!-- Alert -->
+    <div id="alert-msg" class="alert"></div>
+
+    <!-- Stats Row -->
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon">📋</div>
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-label">Total Tasks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-value" id="stat-pending">0</div>
+        <div class="stat-label">Pending</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🔄</div>
+        <div class="stat-value" id="stat-assigned">0</div>
+        <div class="stat-label">Assigned</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value" id="stat-completed">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+    </div>
+
+    <!-- ✅ Help Requests Section (NEW) -->
+    <div class="card">
+      <div class="card-header">📨 Citizen Help Requests</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>People</th>
+              <th>Urgency</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="requests-table-body">
+            <tr>
+              <td colspan="6" class="empty-state">Loading requests...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Create Task Section -->
+    <div class="card">
+      <div class="card-header">📝 Create New Task</div>
+      <form id="task-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-title">Task Title</label>
+            <input type="text" id="task-title" class="form-control" placeholder="e.g. Flood Relief Distribution"
+              required />
+          </div>
+          <div class="form-group">
+            <label for="task-location">Location</label>
+            <input type="text" id="task-location" class="form-control" placeholder="e.g. Zone A, River District"
+              required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="task-description">Description</label>
+          <textarea id="task-description" class="form-control" placeholder="Describe the task in detail..."
+            required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="task-resources">Resources Required</label>
+          <input type="text" id="task-resources" class="form-control"
+            placeholder="e.g. Food, Water, Tents, Medical Kits" />
+        </div>
+        <button type="submit" class="btn btn-primary">➕ Create Task</button>
+      </form>
+    </div>
+
+    <!-- Assign Task Section -->
+    <div class="card">
+      <div class="card-header">🔗 Assign Task to NGO</div>
+      <form id="assign-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="assign-task-id">Select Task</label>
+            <select id="assign-task-id" class="form-control" required>
+              <option value="">-- Choose a Task --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="assign-ngo">Select NGO</label>
+            <select id="assign-ngo" class="form-control" required>
+              <option value="">-- Choose an NGO --</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">✅ Assign Task</button>
+      </form>
+    </div>
+
+    <!-- Tasks Table -->
+    <div class="card">
+      <div class="card-header">📋 All Tasks</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>Resources</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tasks-table-body">
+            <tr>
+              <td colspan="5" class="empty-state">Loading tasks...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/gov.js"></script>
+</body>
+
+</html>
